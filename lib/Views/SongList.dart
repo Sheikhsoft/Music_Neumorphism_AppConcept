@@ -6,6 +6,7 @@ import 'package:flutter_music_neumorphism/Widgets/ChoosenSongWidget.dart';
 import 'package:flutter_music_neumorphism/Widgets/NeumophismContainer.dart';
 import 'package:flutter_music_neumorphism/Widgets/SongWidget.dart';
 import 'package:flutter_music_neumorphism/Widgets/SpinningImage.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SongList extends StatefulWidget {
   @override
@@ -15,8 +16,11 @@ class SongList extends StatefulWidget {
 class _SongListState extends State<SongList> {
   double sliderValue = 0;
   String playingSong;
+
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context,
+        width: 1080, height: 2160, allowFontScaling: false);
     return Scaffold(
       backgroundColor: AppColor.Background,
       body: SafeArea(
@@ -27,14 +31,14 @@ class _SongListState extends State<SongList> {
             child: Column(
               children: <Widget>[
                 Container(
-                  height: 50,
+                  height: ScreenUtil().setHeight(100),
                   child: Row(
                     children: <Widget>[
                       Expanded(
                         child: Text(
                           'THE LAST VOL',
                           style: TextStyle(
-                              fontSize: 15,
+                              fontSize: ScreenUtil().setSp(40),
                               fontWeight: FontWeight.bold,
                               color: Colors.grey),
                           textAlign: TextAlign.center,
@@ -44,7 +48,7 @@ class _SongListState extends State<SongList> {
                   ),
                 ),
                 Container(
-                  height: 30,
+                  height: ScreenUtil().setHeight(90),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 32),
@@ -54,13 +58,13 @@ class _SongListState extends State<SongList> {
                       Hero(
                         tag: 'leftButtonHero',
                         child: NeumorPhismContainer(
-                          width: 50,
-                          height: 50,
+                          width: ScreenUtil().setWidth(130),
+                          height: ScreenUtil().setWidth(130),
                           backgroundColor: AppColor.NavigateButton,
                           backgroundDarkerColor: AppColor.Background,
                           child: Icon(
                             Icons.favorite,
-                            size: 20,
+                            size: ScreenUtil().setSp(50),
                             color: Colors.grey[500],
                           ),
                         ),
@@ -68,19 +72,19 @@ class _SongListState extends State<SongList> {
                       Hero(
                         tag: 'imageHero',
                         child: SpinningImage(
-                          height: 180,
+                          height: ScreenUtil().setWidth(400),
                         ),
                       ),
                       Hero(
                         tag: 'rightButtonHero',
                         child: NeumorPhismContainer(
-                          width: 50,
-                          height: 50,
+                          width: ScreenUtil().setWidth(130),
+                          height: ScreenUtil().setWidth(130),
                           backgroundColor: AppColor.NavigateButton,
                           backgroundDarkerColor: AppColor.Background,
                           child: Icon(
                             Icons.more_horiz,
-                            size: 20,
+                            size: ScreenUtil().setSp(50),
                             color: Colors.grey[500],
                           ),
                         ),
@@ -89,7 +93,7 @@ class _SongListState extends State<SongList> {
                   ),
                 ),
                 Container(
-                  height: 30,
+                  height: ScreenUtil().setHeight(90),
                 ),
                 Expanded(
                   child: Padding(

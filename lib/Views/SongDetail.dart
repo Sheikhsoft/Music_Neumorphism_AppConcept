@@ -4,6 +4,7 @@ import 'package:flutter_music_neumorphism/AppVariables/AppColor.dart';
 import 'package:flutter_music_neumorphism/Models/songModel.dart';
 import 'package:flutter_music_neumorphism/Widgets/NeumophismContainer.dart';
 import 'package:flutter_music_neumorphism/Widgets/SpinningImage.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SongDetail extends StatefulWidget {
   final SongModel song;
@@ -30,7 +31,7 @@ class _SongDetailState extends State<SongDetail> {
           height: MediaQuery.of(context).size.height,
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(ScreenUtil().setHeight(30)),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -42,13 +43,13 @@ class _SongDetailState extends State<SongDetail> {
                             Navigator.of(context).pop();
                           },
                           child: NeumorPhismContainer(
-                            width: 50,
-                            height: 50,
+                            width: ScreenUtil().setWidth(130),
+                            height: ScreenUtil().setWidth(130),
                             backgroundColor: AppColor.NavigateButton,
                             backgroundDarkerColor: AppColor.Background,
                             child: Icon(
                               Icons.arrow_back,
-                              size: 20,
+                              size: ScreenUtil().setSp(50),
                               color: Colors.grey[700],
                             ),
                           ),
@@ -58,7 +59,7 @@ class _SongDetailState extends State<SongDetail> {
                         child: Text(
                           'PLAYING NOW',
                           style: TextStyle(
-                              fontSize: 15,
+                              fontSize: ScreenUtil().setSp(40),
                               fontWeight: FontWeight.bold,
                               color: Colors.grey),
                           textAlign: TextAlign.center,
@@ -67,13 +68,13 @@ class _SongDetailState extends State<SongDetail> {
                       Hero(
                         tag: 'rightButtonHero',
                         child: NeumorPhismContainer(
-                          width: 50,
-                          height: 50,
+                          width: ScreenUtil().setWidth(130),
+                          height: ScreenUtil().setWidth(130),
                           backgroundColor: AppColor.NavigateButton,
                           backgroundDarkerColor: AppColor.Background,
                           child: Icon(
                             Icons.menu,
-                            size: 20,
+                            size: ScreenUtil().setSp(50),
                             color: Colors.grey[700],
                           ),
                         ),
@@ -81,55 +82,60 @@ class _SongDetailState extends State<SongDetail> {
                     ],
                   ),
                   Container(
-                    height: 30,
+                    height: ScreenUtil().setHeight(90),
                   ),
                   Hero(
                     tag: 'imageHero',
                     child: SpinningImage(
-                      height: 330,
+                      height: ScreenUtil().setHeight(800),
                     ),
                   ),
                   Container(
-                    height: 30,
+                    height: ScreenUtil().setHeight(90),
                   ),
                   Text(
                     widget.song.name,
                     style: TextStyle(
-                        fontSize: 30,
+                        fontSize: ScreenUtil().setSp(70),
                         fontWeight: FontWeight.bold,
                         color: Colors.grey),
                   ),
                   Container(
-                    height: 10,
+                    height: ScreenUtil().setHeight(30),
                   ),
                   Text(
                     widget.song.singer,
                     style: TextStyle(
-                        fontSize: 15,
+                        fontSize: ScreenUtil().setSp(35),
                         fontWeight: FontWeight.bold,
                         color: Colors.grey[700]),
                   ),
                   Container(
-                    height: 30,
+                    height: ScreenUtil().setHeight(90),
                   ),
                   Row(
                     children: <Widget>[
                       Text(
                         '0:00',
-                        style: TextStyle(color: Colors.grey[700]),
+                        style: TextStyle(
+                          color: Colors.grey[700],
+                          fontSize: ScreenUtil().setSp(35),
+                        ),
                       ),
                       Spacer(),
                       Text(
                         '12:00',
-                        style: TextStyle(color: Colors.grey[700]),
+                        style: TextStyle(
+                            color: Colors.grey[700],
+                            fontSize: ScreenUtil().setSp(35)),
                       ),
                     ],
                   ),
                   SliderTheme(
                     data: SliderThemeData(
                         thumbColor: Colors.grey,
-                        thumbShape:
-                            RoundSliderThumbShape(enabledThumbRadius: 13)),
+                        thumbShape: RoundSliderThumbShape(
+                            enabledThumbRadius: ScreenUtil().setSp(30))),
                     child: Slider(
                       activeColor: AppColor.NavigateButton,
                       inactiveColor: AppColor.Brighter,
@@ -142,21 +148,21 @@ class _SongDetailState extends State<SongDetail> {
                     ),
                   ),
                   Container(
-                    height: 30,
+                    height: ScreenUtil().setHeight(90),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
                       NeumorPhismContainer(
-                        width: 90,
-                        height: 90,
+                        width: ScreenUtil().setWidth(200),
+                        height: ScreenUtil().setWidth(200),
                         backgroundColor: AppColor.NavigateButton,
                         backgroundDarkerColor: AppColor.Brighter,
                         borderColor: AppColor.NavigateButton,
                         borderDarkerColor: AppColor.NavigateButton,
                         child: Icon(
                           Icons.skip_previous,
-                          size: 30,
+                          size: ScreenUtil().setSp(70),
                           color: Colors.grey[700],
                         ),
                       ),
@@ -169,30 +175,30 @@ class _SongDetailState extends State<SongDetail> {
                         child: Hero(
                           tag: 'playButtonHero',
                           child: NeumorPhismContainer(
-                            width: 90,
-                            height: 90,
+                            width: ScreenUtil().setWidth(200),
+                            height: ScreenUtil().setWidth(200),
                             backgroundColor: AppColor.PauseButton,
                             backgroundDarkerColor: AppColor.PauseButtonDarker,
                             borderColor: AppColor.PauseButton,
                             borderDarkerColor: AppColor.PauseButton,
                             child: Icon(
                               isPlaying ? Icons.pause : Icons.play_arrow,
-                              size: 30,
+                              size: ScreenUtil().setSp(70),
                               color: Colors.white,
                             ),
                           ),
                         ),
                       ),
                       NeumorPhismContainer(
-                        width: 90,
-                        height: 90,
+                        width: ScreenUtil().setWidth(200),
+                        height: ScreenUtil().setWidth(200),
                         backgroundColor: AppColor.NavigateButton,
                         backgroundDarkerColor: AppColor.Brighter,
                         borderColor: AppColor.NavigateButton,
                         borderDarkerColor: AppColor.NavigateButton,
                         child: Icon(
                           Icons.skip_next,
-                          size: 30,
+                          size: ScreenUtil().setSp(70),
                           color: Colors.grey[700],
                         ),
                       ),
